@@ -1,4 +1,4 @@
-def filter_by_state(list_transaction, state="EXECUTED"):
+def filter_by_state(list_transaction: list[dict[str, str]], state: str = "EXECUTED"):
     """Функция принимает словари, а возвращает новый список словарей,
     который содержит только словари с ключом"""
 
@@ -9,7 +9,7 @@ def filter_by_state(list_transaction, state="EXECUTED"):
     return buffer_list
 
 
-def sort_by_date(list_transaction, date=True):
+def sort_by_date(list_transaction: list[dict[str, str]], date: bool = True):
     """Функция принимает список словарей,
     а возвращает список отсортированный по дате"""
 
