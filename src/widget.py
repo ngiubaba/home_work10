@@ -2,7 +2,7 @@ from src import masks
 
 
 def mask_account_card(card: str) -> str:
-    """Функция принимающая тип карты или счета и возвращающая скрытую часть"""
+    '''Функция принимающая тип карты или счета и возвращающая скрытую часть'''
     number = ""
     text = ""
     for i in card:
@@ -17,7 +17,7 @@ def mask_account_card(card: str) -> str:
 
 
 def get_date(date: str) -> str:
-    """Функция принимающая строку в определенном формате и возвращает дд.мм.гггг"""
+    '''Функция принимающая строку в определенном формате и возвращает дд.мм.гггг'''
     date_buffer = ""
     correct_date = ""
     for i in date:
@@ -27,16 +27,6 @@ def get_date(date: str) -> str:
             continue
         else:
             break
-    correct_date = (
-        date_buffer[-1]
-        + date_buffer[-2]
-        + "."
-        + date_buffer[-4]
-        + date_buffer[-3]
-        + "."
-        + date_buffer[0]
-        + date_buffer[1]
-        + date_buffer[2]
-        + date_buffer[3]
-    )
+    correct_date = (date_buffer[-1] + date_buffer[-2] + "." + date_buffer[-4] + date_buffer[-3] + "."
+                    + date_buffer[0] + date_buffer[1] + date_buffer[2] + date_buffer[3])
     return correct_date
