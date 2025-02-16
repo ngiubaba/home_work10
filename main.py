@@ -8,7 +8,6 @@ from src import widget
 # account_number = int(input("Введите номер счета: "))
 # print(masks.get_mask_account(account_number))
 
-
 user_input = input("Введите тип и номер карты/счета: ")
 print(widget.mask_account_card(user_input))
 
