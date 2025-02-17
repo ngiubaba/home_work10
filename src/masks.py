@@ -1,14 +1,18 @@
-def get_mask_card_number(number_cart: int) -> str:
+class InvalidCardNumberError(Exception):
+    """Пользовательское исключение для неверного номера карты."""
+    pass
+
+def get_mask_card_number(number_cart: str) -> str:
     """Функция скрывающая номер банковской карты"""
-    number_cart_str = str(number_cart)
-    if len(number_cart_str) != 16:
-        return "Введен не верный номер карты"
-    else:
-        card_mask = number_cart_str[:4] + " " + number_cart_str[4:6] + "** **** " + number_cart_str[12:]
-        return card_mask
+    if not number_cart.isdigit():
+        raise InvalidCardNumberError("Номер карты должен состоять только из цифр")
+    if len(number_cart) != 16:
+        raise InvalidCardNumberError("Номер карты должен содержать 16 цифр")
+    card_mask = number_cart[:4] + " " + number_cart[4:6] + "** **** " + number_cart[12:]
+    return card_mask
 
 
-def get_mask_account(number_account: int) -> str:
+def get_mask_account(number_account: str) -> str:
     """Функция скрывающая номер банковского счета"""
     number_account_str = str(number_account)
     if len(number_account_str) != 20:
