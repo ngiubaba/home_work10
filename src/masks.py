@@ -1,6 +1,8 @@
 class InvalidCardNumberError(Exception):
     """Пользовательское исключение для неверного номера карты."""
+
     pass
+
 
 def get_mask_card_number(number_cart: str) -> str:
     """Функция скрывающая номер банковской карты"""
@@ -12,11 +14,17 @@ def get_mask_card_number(number_cart: str) -> str:
     return card_mask
 
 
+class InvalidAccountNumberError(Exception):
+    """Пользовательское исключение для неверного номера счета"""
+
+    pass
+
+
 def get_mask_account(number_account: str) -> str:
     """Функция скрывающая номер банковского счета"""
-    number_account_str = str(number_account)
-    if len(number_account_str) != 20:
-        return "Введен не верный номер счета"
-    else:
-        account_mask = "**" + number_account_str[16:]
-        return account_mask
+    if len(number_account) != 20:
+        raise InvalidAccountNumberError("Номер счета должен состоять из 20 цифр")
+    if not number_account.isdigit():
+        raise InvalidAccountNumberError("Номер счета должен состоять только из цифр")
+    account_mask = "**" + number_account[16:]
+    return account_mask
