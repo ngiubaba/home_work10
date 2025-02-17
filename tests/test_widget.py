@@ -1,7 +1,7 @@
 import pytest
 
-from src.masks import InvalidCardNumberError, InvalidAccountNumberError
-from src.widget import mask_account_card, get_date, InvalidNameCard
+from src.masks import InvalidAccountNumberError, InvalidCardNumberError
+from src.widget import InvalidNameCard, get_date, mask_account_card
 
 
 @pytest.mark.parametrize(
@@ -11,25 +11,25 @@ from src.widget import mask_account_card, get_date, InvalidNameCard
         ("Maestro 4621978532149576", "Maestro 4621 97** **** 9576"),
         ("Счет 64125795412389135479", "Счет **5479"),
         ("Visa Classic 6489123754961537", "Visa Classic 6489 12** **** 1537"),
-        ("Visa Gold 6179531648915347", "Visa Gold 6179 53** **** 5347")
-    ]
+        ("Visa Gold 6179531648915347", "Visa Gold 6179 53** **** 5347"),
+    ],
 )
-def test_mask_account_card(account_card, mask):
+def test_mask_account_card(account_card: str, mask: str) -> None:
     """Тест для проверки маскировки номера карты или счета,
-     при его корректном распознавании типа """
+    при его корректном распознавании типа"""
     assert mask_account_card(account_card) == mask
 
 
-def test_nonstandart_account_card_name():
+def test_nonstandart_account_card_name() -> None:
     """Тест функции при неправильном вводе названия карты/счета"""
 
     with pytest.raises(InvalidNameCard):
         mask_account_card("Oleg 4987164489953148")
         mask_account_card("615792440668159")
-        mask_account_card()
+        mask_account_card("")
 
 
-def test_nonstandart_account_card_number():
+def test_nonstandart_account_card_number() -> None:
     """Тест функции при неправильном кол-ве символов в номере карты"""
 
     with pytest.raises(InvalidCardNumberError):
@@ -37,10 +37,10 @@ def test_nonstandart_account_card_number():
         mask_account_card("Maestro 548743")
         mask_account_card("Mastercard 8")
         mask_account_card("Visa ")
-        mask_account_card()
+        mask_account_card("")
 
 
-def test_nonstandart_account_number():
+def test_nonstandart_account_number() -> None:
     """Тест функции при неправильном кол-ве символов в номере карты"""
 
     with pytest.raises(InvalidAccountNumberError):
@@ -48,7 +48,7 @@ def test_nonstandart_account_number():
         mask_account_card("Счет 548743")
         mask_account_card("Счет 8")
         mask_account_card("Счет ")
-        mask_account_card()
+        mask_account_card("")
 
 
 # Тесты даты
@@ -68,9 +68,9 @@ def test_get_date(date: str, formatted_date: str) -> None:
     assert get_date(date) == formatted_date
 
 
-def test_nonstandart_get_date():
+def test_nonstandart_get_date() -> None:
     """Тест функции по преобразованию даты при неправильном вводе или его отсутсвии"""
     with pytest.raises(ValueError):
         get_date("2024-05-20T08:45.987654")
         get_date("13.03.2015")
-        get_date()
+        get_date("")

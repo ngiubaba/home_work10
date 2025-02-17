@@ -1,5 +1,5 @@
 # from src import widget
-from src import processing
+# from src import processing
 
 # from src import masks
 
@@ -15,5 +15,5 @@ from src import processing
 # date_input = input("Введите дату в формате '2024-03-11T02:26:18.671407': ")
 # print(widget.get_date(date_input))
 
-user_input = input("ntrcn^ ")
-print(processing.sort_by_date(user_input))
+# user_input = input("ntrcn^ ")
+# print(processing.sort_by_date(user_input))

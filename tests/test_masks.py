@@ -13,13 +13,13 @@ from src.masks import InvalidAccountNumberError, InvalidCardNumberError, get_mas
         ("9831756489651254", "9831 75** **** 1254"),
     ],
 )
-def test_get_mask_card_number(card_number, mask):
+def test_get_mask_card_number(card_number: str, mask: str) -> None:
     """Тест для проверки правильности маскирования номера карты"""
 
     assert get_mask_card_number(card_number) == mask
 
 
-def test_get_mask_nonstandart_card_number():
+def test_get_mask_nonstandart_card_number() -> None:
     """Тест для проверки работы функции при нестандартном номере карт,
     разной длины номера карт, а так же наличие букв в номере и отсутствие номера"""
 
@@ -28,7 +28,7 @@ def test_get_mask_nonstandart_card_number():
         get_mask_card_number("5688188375123")
         get_mask_card_number("6")
         get_mask_card_number("89327432FMD3456G")
-        get_mask_card_number()
+        get_mask_card_number("")
 
 
 # Проверки номера счета
@@ -41,13 +41,13 @@ def test_get_mask_nonstandart_card_number():
         ("97955102605871887237", "**7237"),
     ],
 )
-def test_get_mask_account(number_account, mask):
+def test_get_mask_account(number_account: str, mask: str) -> None:
     """Тест для правильности маскирования номера счета"""
 
     assert get_mask_account(number_account) == mask
 
 
-def test_get_mask_nonstandart_account_number():
+def test_get_mask_nonstandart_account_number() -> None:
     """Тест для проверки работы функции при нестандартном номере счета,
     разной длины номера счета, а так же наличие букв в счете и отсутствие счета"""
 
@@ -56,4 +56,4 @@ def test_get_mask_nonstandart_account_number():
         get_mask_account("5688188375123")
         get_mask_account("6")
         get_mask_account("89327432FMD3456G4985")
-        get_mask_account()
+        get_mask_account("")

@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from src import masks
-from src.masks import InvalidCardNumberError, InvalidAccountNumberError
+from src.masks import InvalidAccountNumberError, InvalidCardNumberError
 
 
 class InvalidNameCard(Exception):
