@@ -4,9 +4,6 @@ from src.masks import InvalidCardNumberError, InvalidAccountNumberError
 from src.widget import mask_account_card, get_date, InvalidNameCard
 
 
-# Параметризованные тесты с разными типами карт и счетов для проверки универсальности функции.
-# Тестирование функции на обработку некорректных входных данных и проверка ее устойчивости к ошибкам.
-
 @pytest.mark.parametrize(
     "account_card, mask",
     [

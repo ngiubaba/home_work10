@@ -1,5 +1,5 @@
-from src import widget
-
+# from src import widget
+from src import processing
 
 # from src import masks
 
@@ -9,8 +9,11 @@ from src import widget
 # account_number = input("Введите номер счета: ")
 # print(masks.get_mask_account(account_number))
 
-user_input = input("Введите тип и номер карты/счета: ")
-print(widget.mask_account_card(user_input))
+# user_input = input("Введите тип и номер карты/счета: ")
+# print(widget.mask_account_card(user_input))
 
 # date_input = input("Введите дату в формате '2024-03-11T02:26:18.671407': ")
 # print(widget.get_date(date_input))
+
+user_input = input("Введите словарики с ключом: ")
+print(processing.filter_by_state(user_input))
