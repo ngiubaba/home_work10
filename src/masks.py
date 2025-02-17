@@ -6,6 +6,7 @@ class InvalidCardNumberError(Exception):
 
 def get_mask_card_number(number_cart: str) -> str:
     """Функция скрывающая номер банковской карты"""
+
     if not number_cart.isdigit():
         raise InvalidCardNumberError("Номер карты должен состоять только из цифр")
     if len(number_cart) != 16:
@@ -22,6 +23,7 @@ class InvalidAccountNumberError(Exception):
 
 def get_mask_account(number_account: str) -> str:
     """Функция скрывающая номер банковского счета"""
+
     if len(number_account) != 20:
         raise InvalidAccountNumberError("Номер счета должен состоять из 20 цифр")
     if not number_account.isdigit():

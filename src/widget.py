@@ -7,6 +7,7 @@ def mask_account_card(card: str) -> str:
     """Функция принимающая тип карты или счета и возвращающая скрытую часть"""
     number = ""
     text = ""
+
     for i in card:
         if i.isdigit():
             number += i

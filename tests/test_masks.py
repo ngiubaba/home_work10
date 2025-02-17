@@ -15,12 +15,14 @@ from src.masks import InvalidAccountNumberError, InvalidCardNumberError, get_mas
 )
 def test_get_mask_card_number(card_number, mask):
     """Тест для проверки правильности маскирования номера карты"""
+
     assert get_mask_card_number(card_number) == mask
 
 
 def test_get_mask_nonstandart_card_number():
     """Тест для проверки работы функции при нестандартном номере карт,
     разной длины номера карт, а так же наличие букв в номере и отсутствие номера"""
+
     with pytest.raises(InvalidCardNumberError):
         get_mask_card_number("9843871563147851874")
         get_mask_card_number("5688188375123")
@@ -41,12 +43,14 @@ def test_get_mask_nonstandart_card_number():
 )
 def test_get_mask_account(number_account, mask):
     """Тест для правильности маскирования номера счета"""
+
     assert get_mask_account(number_account) == mask
 
 
 def test_get_mask_nonstandart_account_number():
     """Тест для проверки работы функции при нестандартном номере счета,
     разной длины номера счета, а так же наличие букв в счете и отсутствие счета"""
+
     with pytest.raises(InvalidAccountNumberError):
         get_mask_account("5461587951348915672")
         get_mask_account("5688188375123")
