@@ -3,7 +3,6 @@ from datetime import datetime
 from src import masks
 from src.masks import InvalidCardNumberError, InvalidAccountNumberError
 
-
 class InvalidNameCard(Exception):
     pass
 

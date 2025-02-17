@@ -15,5 +15,5 @@ from src import processing
 # date_input = input("Введите дату в формате '2024-03-11T02:26:18.671407': ")
 # print(widget.get_date(date_input))
 
-user_input = input("Введите словарики с ключом: ")
-print(processing.filter_by_state(user_input))
+user_input = input("ntrcn^ ")
+print(processing.sort_by_date(user_input))
