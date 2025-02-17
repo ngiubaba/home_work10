@@ -14,6 +14,7 @@ def dictionary_list():
         {'id': "654987321", 'state': 'CANCELED', 'date': '2018-03-18T06:15:45.654321'}
     ]
 
+
 @pytest.fixture
 def dictionary_list_true():
     return [
@@ -26,6 +27,7 @@ def dictionary_list_true():
         {'id': "594226727", 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
         {'id': "654987321", 'state': 'CANCELED', 'date': '2018-03-18T06:15:45.654321'}
     ]
+
 
 @pytest.fixture
 def dictionary_list_false():

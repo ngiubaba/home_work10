@@ -3,6 +3,7 @@ from datetime import datetime
 from src import masks
 from src.masks import InvalidCardNumberError, InvalidAccountNumberError
 
+
 class InvalidNameCard(Exception):
     pass
 
@@ -32,7 +33,6 @@ def mask_account_card(card: str) -> str:
             raise InvalidCardNumberError("Номер карты должен содержать 16 цифр")
     else:
         raise InvalidNameCard("Не верное наименование карты/счета")
-
 
 
 def get_date(date: str) -> str:
