@@ -25,7 +25,7 @@ def get_mask_account(number_account: str) -> str:
     """Функция скрывающая номер банковского счета"""
 
     if len(number_account) != 20:
-        raise InvalidAccountNumberError("Номер счета должен состоять из 20 цифр")
+        raise InvalidAccountNumberError("Номер счета должен состоять из 20 символов")
     if not number_account.isdigit():
         raise InvalidAccountNumberError("Номер счета должен состоять только из цифр")
     account_mask = "**" + number_account[16:]

@@ -1,6 +1,7 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.masks import InvalidCardNumberError, InvalidAccountNumberError
+from src.widget import mask_account_card, get_date, InvalidNameCard
 
 
 # Параметризованные тесты с разными типами карт и счетов для проверки универсальности функции.
@@ -22,13 +23,38 @@ def test_mask_account_card(account_card, mask):
     assert mask_account_card(account_card) == mask
 
 
-# Функция
-# get_date
-# :
-# Тестирование правильности преобразования даты.
-# Проверка работы функции на различных входных форматах даты, включая граничные случаи и нестандартные строки с датами.
-# Проверка, что функция корректно обрабатывает входные строки, где отсутствует дата.
+def test_nonstandart_account_card_name():
+    """Тест функции при неправильном вводе названия карты/счета"""
 
+    with pytest.raises(InvalidNameCard):
+        mask_account_card("Oleg 4987164489953148")
+        mask_account_card("615792440668159")
+        mask_account_card()
+
+
+def test_nonstandart_account_card_number():
+    """Тест функции при неправильном кол-ве символов в номере карты"""
+
+    with pytest.raises(InvalidCardNumberError):
+        mask_account_card("Visa 427631004998")
+        mask_account_card("Maestro 548743")
+        mask_account_card("Mastercard 8")
+        mask_account_card("Visa ")
+        mask_account_card()
+
+
+def test_nonstandart_account_number():
+    """Тест функции при неправильном кол-ве символов в номере карты"""
+
+    with pytest.raises(InvalidAccountNumberError):
+        mask_account_card("Счет 427631004998")
+        mask_account_card("Счет 548743")
+        mask_account_card("Счет 8")
+        mask_account_card("Счет ")
+        mask_account_card()
+
+
+# Тесты даты
 @pytest.mark.parametrize(
     "date, formatted_date",
     [
@@ -43,3 +69,11 @@ def test_get_date(date: str, formatted_date: str) -> None:
     """Тест для проверки правильности преобразования даты"""
 
     assert get_date(date) == formatted_date
+
+
+def test_nonstandart_get_date():
+    """Тест функции по преобразованию даты при неправильном вводе или его отсутсвии"""
+    with pytest.raises(ValueError):
+        get_date("2024-05-20T08:45.987654")
+        get_date("13.03.2015")
+        get_date()
