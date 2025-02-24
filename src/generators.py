@@ -14,20 +14,23 @@ def transaction_descriptions(transaction_dict: list[dict]) -> Generator[str]:
     """
     Функция возвращающая описание каждой транзакции
     """
+    if not transaction_dict:
+        raise InvalidValue("Обнаружены пустые данные")
     for transaction in transaction_dict:
         yield transaction["description"]
 
 
 class InvalidValue(Exception):
+    """Ошибка неверно введенных значений"""
     pass
 
 
-def card_number_generator(begin: str, end: str) -> Generator[str]:
+def card_number_generator(begin_number: str, end_number: str) -> Generator[str]:
     """
     Функция генерирующая номера карт в заданном диапазоне
     """
-    int_begin = int(begin)
-    int_end = int(end)
+    int_begin = int(begin_number)
+    int_end = int(end_number)
     last_number = 9999_9999_9999_9999
 
     if int_begin > last_number:
