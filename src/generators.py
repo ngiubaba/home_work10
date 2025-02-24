@@ -1,34 +1,43 @@
-def filter_by_currency(transaction_dict, code):
+from typing import Any, Generator
+
+
+def filter_by_currency(transaction_dict: list[dict], code: str) -> filter[Any]:
     """
     Функция итератор для фильтрации транзакций по коду
-    :param transaction_dict:
-    :param code:
-    :return:
     """
+    if not transaction_dict:
+        raise InvalidValue("Обнаружены пустые данные")
     transaction_code = filter(lambda x: x["operationAmount"]["currency"]["code"] == code, transaction_dict)
     return transaction_code
 
-def transaction_descriptions(transaction_dict):
+def transaction_descriptions(transaction_dict: list[dict]) -> Generator[str]:
     """
     Функция возвращающая описание каждой транзакции
-    :param transaction_dict:
-    :return:
     """
     for transaction in transaction_dict:
         yield transaction["description"]
 
 
-def card_number_generator(begin, end):
+class InvalidValue(Exception):
+    pass
+
+
+def card_number_generator(begin: str, end: str) -> Generator[str]:
     """
     Функция генерирующая номера карт в заданном диапазоне
-    :param begin:
-    :param end:
-    :return:
     """
     int_begin = int(begin)
     int_end = int(end)
     last_number = 9999_9999_9999_9999
 
+    if int_begin > last_number:
+        raise InvalidValue("Начальный номер выходит за рамки формата номера карты")
+    if int_begin < 1:
+        int_begin = 1
+    if int_end > last_number:
+        raise InvalidValue("Конечный номер выходит за рамки формата номера карты")
+    if int_begin > int_end:
+        raise InvalidValue("Начальный номер карты не может быть больше конечного")
 
     for number in range(int_begin, int_end + 1):
         str_number = str(number)
@@ -45,7 +54,9 @@ def card_number_generator(begin, end):
 
 if __name__ == "__main__":
     # Создаем генератор для диапазона от 1 до 10
-    generator = card_number_generator(1234567891012141, 1234567891012145)
+    begin = input("Начальное")
+    end = input("конечное")
+    generator = card_number_generator(begin, end)
 
     # Выводим сгенерированные номера карт
     for card in generator:
