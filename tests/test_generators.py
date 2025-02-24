@@ -1,8 +1,6 @@
-from statistics import variance
-
 import pytest
 
-from src.generators import card_number_generator, filter_by_currency, transaction_descriptions, InvalidValue
+from src.generators import InvalidValue, card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(transactions: list[dict]) -> None:
@@ -12,13 +10,13 @@ def test_filter_by_currency(transactions: list[dict]) -> None:
         assert transaction["operationAmount"]["currency"]["code"] == "USD"
 
 
-def test_no_dict_filter():
+def test_no_dict_filter() -> None:
     """Тест функции на ввод пустых данных"""
     with pytest.raises(InvalidValue):
         filter_by_currency([], "USD")
 
 
-def test_transaction_descriptions(transactions):
+def test_transaction_descriptions(transactions: list[dict]) -> None:
     """Тест функции на нормальное функционирование"""
     transaction_decription = transaction_descriptions(transactions)
     transfer_org = "Перевод организации"
@@ -28,14 +26,14 @@ def test_transaction_descriptions(transactions):
         assert transaction == transfer_card or transfer_org or transfer_account
 
 
-def test_no_dict_transaction_descriptions():
+def test_no_dict_transaction_descriptions() -> None:
     """Тест на отсутствие входных данных"""
     # test = None
     with pytest.raises(InvalidValue):
         next(transaction_descriptions([]))
 
 
-def test_card_number_generator():
+def test_card_number_generator() -> None:
     test_result = ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003"]
     begin_number = "1"
     end_number = "3"
