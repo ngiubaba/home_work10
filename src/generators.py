@@ -1,5 +1,9 @@
 from typing import Any, Generator
 
+class InvalidValue(Exception):
+    """Ошибка неверно введенных значений"""
+    pass
+
 
 def filter_by_currency(transaction_dict: list[dict], code: str) -> filter[Any]:
     """
@@ -10,6 +14,7 @@ def filter_by_currency(transaction_dict: list[dict], code: str) -> filter[Any]:
     transaction_code = filter(lambda x: x["operationAmount"]["currency"]["code"] == code, transaction_dict)
     return transaction_code
 
+
 def transaction_descriptions(transaction_dict: list[dict]) -> Generator[str]:
     """
     Функция возвращающая описание каждой транзакции
@@ -18,11 +23,6 @@ def transaction_descriptions(transaction_dict: list[dict]) -> Generator[str]:
         raise InvalidValue("Обнаружены пустые данные")
     for transaction in transaction_dict:
         yield transaction["description"]
-
-
-class InvalidValue(Exception):
-    """Ошибка неверно введенных значений"""
-    pass
 
 
 def card_number_generator(begin_number: str, end_number: str) -> Generator[str]:
@@ -55,12 +55,12 @@ def card_number_generator(begin_number: str, end_number: str) -> Generator[str]:
         yield card_number
 
 
-if __name__ == "__main__":
-    # Создаем генератор для диапазона от 1 до 10
-    begin = input("Начальное")
-    end = input("конечное")
-    generator = card_number_generator(begin, end)
-
-    # Выводим сгенерированные номера карт
-    for card in generator:
-        print(card)
+# if __name__ == "__main__":
+#     # Создаем генератор для диапазона от 1 до 10
+#     begin = input("Начальное")
+#     end = input("конечное")
+#     generator = card_number_generator(begin, end)
+#
+#     # Выводим сгенерированные номера карт
+#     for card in generator:
+#         print(card)
