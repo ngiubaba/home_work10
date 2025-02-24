@@ -33,9 +33,17 @@ def test_no_dict_transaction_descriptions() -> None:
         next(transaction_descriptions([]))
 
 
-def test_card_number_generator() -> None:
-    test_result = ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003"]
-    begin_number = "1"
-    end_number = "3"
-    result = card_number_generator(begin_number, end_number)
-    assert list(result) == test_result
+@pytest.mark.parametrize(
+    "begin_number, end_number, expected_result",
+    [
+        ("1", "3", ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003"]),
+        ("10", "12", ["0000 0000 0000 0010", "0000 0000 0000 0011", "0000 0000 0000 0012"]),
+        ("999", "1001", ["0000 0000 0000 0999", "0000 0000 0000 1000", "0000 0000 0000 1001"]),
+    ]
+)
+def test_card_number_generator(begin_number: str, end_number: str, expected_result: list[str]) -> None:
+    """
+    Параметризованный тест для функции card_number_generator.
+    """
+    result = card_number_generator(int(begin_number), int(end_number))
+    assert list(result) == expected_result
