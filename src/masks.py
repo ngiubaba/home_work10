@@ -1,9 +1,12 @@
+from src.decorators import log
+
+
 class InvalidCardNumberError(Exception):
     """Пользовательское исключение для неверного номера карты."""
 
     pass
 
-
+@log(filename="log.txt")
 def get_mask_card_number(number_cart: str) -> str:
     """Функция скрывающая номер банковской карты"""
 
