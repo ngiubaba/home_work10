@@ -39,7 +39,7 @@ def test_no_dict_transaction_descriptions() -> None:
         ("1", "3", ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003"]),
         ("10", "12", ["0000 0000 0000 0010", "0000 0000 0000 0011", "0000 0000 0000 0012"]),
         ("999", "1001", ["0000 0000 0000 0999", "0000 0000 0000 1000", "0000 0000 0000 1001"]),
-    ]
+    ],
 )
 def test_card_number_generator(begin_number: str, end_number: str, expected_result: list[str]) -> None:
     """

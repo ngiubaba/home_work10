@@ -1,6 +1,3 @@
-from src.decorators import log
-
-
 class InvalidCardNumberError(Exception):
     """Пользовательское исключение для неверного номера карты."""
 
