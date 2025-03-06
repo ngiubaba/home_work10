@@ -7,11 +7,11 @@ from src.decorators import log
 # from src import masks
 
 
-cart_number = input("Введите номер карты: ")
-print(masks.get_mask_card_number(cart_number))
+# cart_number = input("Введите номер карты: ")
+# print(masks.get_mask_card_number(cart_number))
 #
-# account_number = input("Введите номер счета: ")
-# print(masks.get_mask_account(account_number))
+account_number = input("Введите номер счета: ")
+print(masks.get_mask_account(account_number))
 
 # user_input = input("Введите тип и номер карты/счета: ")
 # print(widget.mask_account_card(user_input))

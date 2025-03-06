@@ -6,7 +6,7 @@ class InvalidCardNumberError(Exception):
 
     pass
 
-@log(filename="log.txt")
+@log()
 def get_mask_card_number(number_cart: str) -> str:
     """Функция скрывающая номер банковской карты"""
 
@@ -23,7 +23,7 @@ class InvalidAccountNumberError(Exception):
 
     pass
 
-
+@log()
 def get_mask_account(number_account: str) -> str:
     """Функция скрывающая номер банковского счета"""
 

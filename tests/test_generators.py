@@ -45,5 +45,5 @@ def test_card_number_generator(begin_number: str, end_number: str, expected_resu
     """
     Параметризованный тест для функции card_number_generator.
     """
-    result = card_number_generator(int(begin_number), int(end_number))
+    result = card_number_generator(begin_number, end_number)
     assert list(result) == expected_result
