@@ -1,17 +1,16 @@
 # import datetime
+from collections.abc import Callable
 from typing import Any
 
-from black.lines import Callable
-from click.decorators import P, T
 
-
-def log(filename: str ="") -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+def log(filename: str = "") -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """
 
     :rtype: object
     """
+
     def log_function(func: Callable) -> Callable:
-        def wrapper(*args: P.args, **kwargs: P.kwargs) -> T | None:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             # start_time = datetime.datetime.now().strftime("%d.%m.%y %H:%M:%S")
 
             try:
