@@ -1,5 +1,6 @@
 # import datetime
 from collections.abc import Callable
+from functools import wraps
 from typing import Any
 
 
@@ -10,6 +11,7 @@ def log(filename: str = "") -> Callable[[Callable[..., Any]], Callable[..., Any]
     """
 
     def log_function(func: Callable) -> Callable:
+        @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             # start_time = datetime.datetime.now().strftime("%d.%m.%y %H:%M:%S")
 
