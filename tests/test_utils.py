@@ -36,7 +36,7 @@ def test_transaction_dictionary_empty_file():
     with patch("os.path.exists", return_value=True), \
          patch("builtins.open", mock_open(read_data=mock_json)):
         result = transaction_dictionary("operations.json")
-        assert result == []  # Проверяем, что функция возвращает пустой список
+        assert result == []
 
 @pytest.mark.parametrize("transaction, amount", [
     (
