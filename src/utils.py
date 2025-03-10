@@ -11,11 +11,16 @@ def transaction_dictionary(file_name = "operations.json"):
         return dict_transaction
     else:
         with open(file_path, "r", encoding="utf-8") as f:
-            dict_transaction = json.load(f)
+            content = f.read().strip()
+            if not content:
+                return []
+
+            dict_transaction = json.loads(content)
+
             if type(dict_transaction) is list:
                 return dict_transaction
             else:
-                return dict_transaction
+                return []
 
 # transaction_data = {
 #     "id": 441945886,
@@ -25,7 +30,7 @@ def transaction_dictionary(file_name = "operations.json"):
 #       "amount": "10",
 #       "currency": {
 #         "name": "руб.",
-#         "code": "USD"
+#         "code": "RUB"
 #       }
 #     },
 #     "description": "Перевод организации",
@@ -34,15 +39,15 @@ def transaction_dictionary(file_name = "operations.json"):
 #   }
 def get_transaction_amount(transaction_data):
     if transaction_data["operationAmount"]["currency"]["code"] == "RUB":
-        return transaction_data["operationAmount"]["amount"]
+        return float(transaction_data["operationAmount"]["amount"])
     else:
         amount = transaction_data["operationAmount"]["amount"]
         from1 = transaction_data["operationAmount"]["currency"]["code"]
         result = convert_rub(from1, amount)
-        return result
+        return float(result)
 
-# if __name__ == "__main__" :
-#     print(get_transaction_amount(transaction_data))
+if __name__ == "__main__" :
+    print(transaction_dictionary())
 
 
 
