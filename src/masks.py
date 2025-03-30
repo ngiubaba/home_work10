@@ -5,10 +5,11 @@ os.makedirs("logs", exist_ok=True)
 log_file = "logs/masks.log"
 logger = logging.getLogger(__name__)
 file_formatter = logging.Formatter("%(asctime)s %(name)s (%(funcName)s) %(levelname)s: %(message)s")
-file_handler = logging.FileHandler(log_file, mode="w", encoding='utf-8')
+file_handler = logging.FileHandler(log_file, mode="w", encoding="utf-8")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
+
 
 class InvalidCardNumberError(Exception):
     """Пользовательское исключение для неверного номера карты."""

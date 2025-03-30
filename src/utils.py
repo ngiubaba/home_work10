@@ -1,16 +1,15 @@
 import json
-
+import logging
+import os
 from typing import Any, Union
 
 from src.external_api import convert_rub
-import logging
-import os
 
 os.makedirs("logs", exist_ok=True)
 log_file = "logs/utils.log"
 logger = logging.getLogger(__name__)
 file_formatter = logging.Formatter("%(asctime)s %(name)s (%(funcName)s) %(levelname)s: %(message)s")
-file_handler = logging.FileHandler(log_file, mode="w", encoding='utf-8')
+file_handler = logging.FileHandler(log_file, mode="w", encoding="utf-8")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
@@ -44,17 +43,11 @@ transaction_data = {
     "id": 441945886,
     "state": "EXECUTED",
     "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "10",
-      "currency": {
-        "name": "руб.",
-        "code": "USD"
-      }
-    },
+    "operationAmount": {"amount": "10", "currency": {"name": "руб.", "code": "USD"}},
     "description": "Перевод организации",
     "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589"
-  }
+    "to": "Счет 64686473678894779589",
+}
 
 
 def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
@@ -71,6 +64,6 @@ def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
         return float(result)
 
 
-if __name__ == "__main__" :
+if __name__ == "__main__":
     logger.info("Запуск программы")
     print(get_transaction_amount(transaction_data))
