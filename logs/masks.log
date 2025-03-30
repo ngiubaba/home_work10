@@ -1,0 +1,2 @@
+2025-03-30 20:49:03,187 src.masks (get_mask_card_number) INFO: Начало функции
+2025-03-30 20:49:03,187 src.masks (get_mask_card_number) WARNING: Не верно введен номер карты пользователем
