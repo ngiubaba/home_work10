@@ -1,25 +1,25 @@
-2025-04-03 21:29:13,896 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,896 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,897 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,897 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,898 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,898 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,899 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,899 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,900 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,901 src.masks (get_mask_card_number) WARNING: Ошибка ввода номера карты (неверное кол-во символов)
-2025-04-03 21:29:13,902 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,903 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,903 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,904 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,905 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,905 src.masks (get_mask_account) WARNING: Ошибка ввода номера счета (неверное кол-во символов)
-2025-04-03 21:29:13,927 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,927 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,928 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,928 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,929 src.masks (get_mask_account) INFO: Начало функции
-2025-04-03 21:29:13,930 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,930 src.masks (get_mask_card_number) INFO: Конец функции
-2025-04-03 21:29:13,931 src.masks (get_mask_card_number) INFO: Начало функции
-2025-04-03 21:29:13,931 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,800 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,801 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,803 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,803 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,804 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,804 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,806 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,806 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,807 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,807 src.masks (get_mask_card_number) WARNING: Ошибка ввода номера карты (неверное кол-во символов)
+2025-04-03 21:36:21,808 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,810 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,811 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,813 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,815 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,815 src.masks (get_mask_account) WARNING: Ошибка ввода номера счета (неверное кол-во символов)
+2025-04-03 21:36:21,849 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,849 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,851 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,851 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,853 src.masks (get_mask_account) INFO: Начало функции
+2025-04-03 21:36:21,854 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,854 src.masks (get_mask_card_number) INFO: Конец функции
+2025-04-03 21:36:21,856 src.masks (get_mask_card_number) INFO: Начало функции
+2025-04-03 21:36:21,856 src.masks (get_mask_card_number) INFO: Конец функции
