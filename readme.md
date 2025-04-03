@@ -28,6 +28,7 @@
 poetry add --group lint flake8@7.1.1 mypy@1.15.0 black@25.1.0 isort@6.0.0
 poetry add requests
 poetry add python-dotenv 
+poetry add pandas
 ```
 
 4. Запустите файл **main.py**
