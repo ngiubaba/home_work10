@@ -11,12 +11,30 @@ from src.utils_files import read_csv, read_excel
 def test_read_csv(mock_csv: Mock) -> None:
     """Тест нормальной работы функции"""
 
-    csv_data = [{"id": "103", "state": "EXECUTED", "date": "2023-03-12",
-                 "amount": "103", "currency_name": "Ruble", "currency_code": "RUB",
-                 "description": "test", "from": "Master Card", "to": "Visa"}]
-    data = [{"id": 103, "state": "EXECUTED", "date": "2023-03-12",
-             "operationAmount": {"amount": "103", "currency": {"name": "Ruble", "code": "RUB"}},
-             "description": "test", "from": "Master Card", "to": "Visa"}]
+    csv_data = [
+        {
+            "id": "103",
+            "state": "EXECUTED",
+            "date": "2023-03-12",
+            "amount": "103",
+            "currency_name": "Ruble",
+            "currency_code": "RUB",
+            "description": "test",
+            "from": "Master Card",
+            "to": "Visa",
+        }
+    ]
+    data = [
+        {
+            "id": 103,
+            "state": "EXECUTED",
+            "date": "2023-03-12",
+            "operationAmount": {"amount": "103", "currency": {"name": "Ruble", "code": "RUB"}},
+            "description": "test",
+            "from": "Master Card",
+            "to": "Visa",
+        }
+    ]
     mock_csv.return_value = csv_data
     assert read_csv("data/transactions.csv") == data
 
@@ -39,12 +57,30 @@ def test_invalid_csv(mock_csv: Mock) -> None:
 def test_read_excel(mock_excel: Mock) -> None:
     """Тест нормальной работы функции"""
 
-    excel_data = pd.DataFrame({"id": [103.0], "state": ["EXECUTED"], "date": ["2023-03-12"],
-                               "amount": [103.0], "currency_name": ["Ruble"], "currency_code": ["RUB"],
-                               "description": ["test"], "from": ["Master Card"], "to": ["Visa"]})
-    data = [{"id": 103, "state": "EXECUTED", "date": "2023-03-12",
-             "operationAmount": {"amount": "103.0", "currency": {"name": "Ruble", "code": "RUB"}},
-             "description": "test", "from": "Master Card", "to": "Visa"}]
+    excel_data = pd.DataFrame(
+        {
+            "id": [103.0],
+            "state": ["EXECUTED"],
+            "date": ["2023-03-12"],
+            "amount": [103.0],
+            "currency_name": ["Ruble"],
+            "currency_code": ["RUB"],
+            "description": ["test"],
+            "from": ["Master Card"],
+            "to": ["Visa"],
+        }
+    )
+    data = [
+        {
+            "id": 103,
+            "state": "EXECUTED",
+            "date": "2023-03-12",
+            "operationAmount": {"amount": "103.0", "currency": {"name": "Ruble", "code": "RUB"}},
+            "description": "test",
+            "from": "Master Card",
+            "to": "Visa",
+        }
+    ]
     mock_excel.return_value = excel_data
     assert read_excel("data/transactions_excel.xlsx") == data
 

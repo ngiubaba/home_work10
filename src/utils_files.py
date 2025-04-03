@@ -1,5 +1,6 @@
 import csv
 import os
+
 import pandas as pd
 
 
@@ -36,7 +37,7 @@ def read_csv(filename: str) -> list:
                         "currency": {
                             "name": currency_name,
                             "code": currency_code,
-                        }
+                        },
                     },
                     "description": description,
                     "from": from_val,
@@ -63,7 +64,7 @@ def read_excel(filename: str) -> list:
     file_path = os.path.join(base_dir, filename)
 
     try:
-        with open(filename, "rb") as excel_file:
+        with open(file_path, "rb") as excel_file:
             excel_data = pd.read_excel(excel_file)
             excel_dict = excel_data.to_dict("records")
             for row in excel_dict:
@@ -88,7 +89,7 @@ def read_excel(filename: str) -> list:
                         "currency": {
                             "name": currency_name,
                             "code": currency_code,
-                        }
+                        },
                     },
                     "description": description,
                     "from": from_val,
