@@ -1,5 +1,5 @@
 from src.generators import filter_by_currency
-from src.processing import filter_by_state, sort_by_date
+from src.processing import filter_by_state, sort_by_date, find_by_description
 from src.utils import transaction_dictionary
 from src.utils_files import read_csv, read_excel
 from src.widget import get_date, mask_account_card
@@ -11,16 +11,20 @@ def main() -> None:
     filename_csv = "data/transactions.csv"
     filename_excel = "data/transactions_excel.xlsx"
 
-    print("""Программа: Привет! Добро пожаловать в программу работы 
-    с банковскими транзакциями.\n""")
+    print(
+        """Программа: Привет! Добро пожаловать в программу работы
+с банковскими транзакциями.\n"""
+    )
 
-    print("""Выберите необходимый пункт меню:
+    print(
+        """Выберите необходимый пункт меню:
     1. Получить информацию о транзакциях из JSON-файла
     2. Получить информацию о транзакциях из CSV-файла
-    3. Получить информацию о транзакциях из XLSX-файла""")
+    3. Получить информацию о транзакциях из XLSX-файла"""
+    )
     user_change = input("Пользователь: ")
 
-    list_transaction = []
+    list_transaction: list = []
 
     if user_change == "1":
         list_transaction = transaction_dictionary(filename_json)
@@ -34,8 +38,10 @@ def main() -> None:
 
     good_change = True
     while good_change:
-        print("""Программа: Введите статус, по которому необходимо выполнить фильтрацию. 
-Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING""")
+        print(
+            """Программа: Введите статус, по которому необходимо выполнить фильтрацию.
+Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING"""
+        )
 
         user_change_status = input("Пользователь: ")
 
@@ -76,10 +82,15 @@ def main() -> None:
     if transactions_rub.lower() == "да":
         list_transaction = list(filter_by_currency(list_transaction, "RUB"))
 
-
-    print("""\nПрограмма: Отфильтровать список транзакций по определенному слову 
-в описании? Да/Нет""")
+    print(
+        """\nПрограмма: Отфильтровать список транзакций по определенному слову
+в описании? Да/Нет"""
+    )
     sort_by_word = input("Пользователь: ")
+    if sort_by_word == "да":
+        word = input("Введите слово для фильтра: ")
+
+        list_transaction = find_by_description(list_transaction, word)
 
     print("\nПрограмма: Распечатываю итоговый список транзакций...\n")
     print("Программа:")
@@ -87,9 +98,9 @@ def main() -> None:
 
     for transaction in list_transaction:
         print()
-        date = get_date(transaction["date"])
+        date_transactions = get_date(transaction["date"])
         description = transaction["description"]
-        print(f"{date} {description}")
+        print(f"{date_transactions} {description}")
         from_ = ""
         if "from" in transaction:
             from_ = transaction["from"]
@@ -101,6 +112,7 @@ def main() -> None:
         amount = transaction["operationAmount"]["amount"]
         currency_name = transaction["operationAmount"]["currency"]["name"]
         print(f"Сумма: {amount} {currency_name}")
+
 
 if __name__ == "__main__":
     main()
