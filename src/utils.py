@@ -18,7 +18,7 @@ logger.setLevel(logging.DEBUG)
 def transaction_dictionary(file_name: str = "operations.json") -> Union[list[dict], dict]:
     logger.info("Начало функции")
     dict_transaction: list[dict[str, Any]] = []
-    file_path = os.path.join("..", "data", file_name)
+    file_path = os.path.join("data", file_name)
     if not os.path.exists(file_path):
         logger.debug("Файл пустой")
         return dict_transaction
@@ -29,25 +29,14 @@ def transaction_dictionary(file_name: str = "operations.json") -> Union[list[dic
             if not content:
                 logger.debug("Файл пустой")
                 return []
-            logger.debug("Перевод в json файл")
+            logger.debug("Перевод из json файла")
             dict_transaction = json.loads(content)
 
-            if type(dict_transaction) is list:
+            if len(dict_transaction) >= 1:
                 logger.info("Функция выполнена")
                 return dict_transaction
             else:
                 return []
-
-
-transaction_data = {
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {"amount": "10", "currency": {"name": "руб.", "code": "USD"}},
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589",
-}
 
 
 def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
@@ -62,8 +51,3 @@ def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
         result = convert_rub(from1, amount)
         logger.info("Функция выполнена после перевода валюты")
         return float(result)
-
-
-if __name__ == "__main__":
-    logger.info("Запуск программы")
-    print(get_transaction_amount(transaction_data))
