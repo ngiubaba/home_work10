@@ -7,9 +7,9 @@ def filter_by_state(list_transaction: list[dict[str, str]], state: str = "EXECUT
 
     buffer_list = []
     for i in list_transaction:
-        if not 'state' in i:
+        if "state" not in i:
             continue
-        if i['state'] == state:
+        if i["state"] == state:
             buffer_list.append(i)
 
     return buffer_list

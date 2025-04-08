@@ -1,0 +1,4 @@
+2025-04-09 00:00:21,608 src.utils (transaction_dictionary) INFO: Начало функции
+2025-04-09 00:00:21,608 src.utils (transaction_dictionary) DEBUG: Файл найден
+2025-04-09 00:00:21,609 src.utils (transaction_dictionary) DEBUG: Перевод из json файла
+2025-04-09 00:00:21,609 src.utils (transaction_dictionary) INFO: Функция выполнена

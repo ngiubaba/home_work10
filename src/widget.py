@@ -33,7 +33,6 @@ def mask_account_card(card: str) -> str:
             raise InvalidCardNumberError("Номер карты должен содержать 16 цифр")
 
 
-
 def get_date(date: str) -> str:
     """Функция принимающая строку в определенном формате и возвращает дд.мм.гггг"""
     try:

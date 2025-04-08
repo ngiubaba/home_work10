@@ -68,8 +68,7 @@ def read_excel(filename: str) -> list:
             excel_data = pd.read_excel(excel_file)
             excel_dict = excel_data.to_dict("records")
             for row in excel_dict:
-                if row['id'] != row['id']:
-                   # print(f"incorrect Excel data in {filename}: 'id' field must be numeric.")
+                if row["id"] != row["id"]:
                     continue
                 else:
                     id = int(row["id"])

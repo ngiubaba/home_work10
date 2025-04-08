@@ -5,9 +5,7 @@ from typing import Any
 
 
 def log(filename: str = "") -> Callable[[Callable[..., Any]], Callable[..., Any]]:
-    """
-
-    """
+    """ """
 
     def log_function(func: Callable) -> Callable:
         @wraps(func)
