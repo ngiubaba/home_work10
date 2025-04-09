@@ -1,5 +1,5 @@
 from src.generators import filter_by_currency
-from src.processing import filter_by_state, sort_by_date, find_by_description
+from src.processing import filter_by_state, find_by_description, sort_by_date
 from src.utils import transaction_dictionary
 from src.utils_files import read_csv, read_excel
 from src.widget import get_date, mask_account_card

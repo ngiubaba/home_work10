@@ -1,9 +1,11 @@
 import json
 import logging
 import os
+from collections import Counter
 from typing import Any, Union
 
 from src.external_api import convert_rub
+from src.processing import find_by_description
 
 os.makedirs("logs", exist_ok=True)
 log_file = "logs/utils.log"
@@ -51,3 +53,16 @@ def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
         result = convert_rub(from1, amount)
         logger.info("Функция выполнена после перевода валюты")
         return float(result)
+
+
+def counter_category(transactions_data: list, categories: list[str]) -> dict[str, int]:
+    """Функция подсчета операций по категориям"""
+
+    categories_count = Counter()
+
+    for category in categories:
+        transactions = find_by_description(transactions_data, category)
+        for i in range(len(transactions)):
+            categories_count.update([category])
+
+    return dict(categories_count)
