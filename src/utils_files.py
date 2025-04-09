@@ -60,42 +60,42 @@ def read_excel(filename: str) -> list:
     """
 
     transaction_data = list()
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Корень проекта
-    file_path = os.path.join(base_dir, filename)
+    # base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Корень проекта
+    # file_path = os.path.join(base_dir, filename)
 
     try:
-        with open(file_path, "rb") as excel_file:
+        with open(filename, "rb") as excel_file:
             excel_data = pd.read_excel(excel_file)
             excel_dict = excel_data.to_dict("records")
             for row in excel_dict:
                 if row["id"] != row["id"]:
-                    print(f"incorrect Excel data in {filename}: 'id' field must be numeric.")
                     continue
-                id = int(row["id"])
-                state = row["state"]
-                date = row["date"]
-                amount = str(row["amount"])
-                currency_name = row["currency_name"]
-                currency_code = row["currency_code"]
-                from_val = row["from"]
-                to_val = row["to"]
-                description = row["description"]
-                transaction = {
-                    "id": id,
-                    "state": state,
-                    "date": date,
-                    "operationAmount": {
-                        "amount": amount,
-                        "currency": {
-                            "name": currency_name,
-                            "code": currency_code,
+                else:
+                    id = int(row["id"])
+                    state = row["state"]
+                    date = row["date"]
+                    amount = str(row["amount"])
+                    currency_name = row["currency_name"]
+                    currency_code = row["currency_code"]
+                    from_val = row["from"]
+                    to_val = row["to"]
+                    description = row["description"]
+                    transaction = {
+                        "id": id,
+                        "state": state,
+                        "date": date,
+                        "operationAmount": {
+                            "amount": amount,
+                            "currency": {
+                                "name": currency_name,
+                                "code": currency_code,
+                            },
                         },
-                    },
-                    "description": description,
-                    "from": from_val,
-                    "to": to_val,
-                }
-                transaction_data.append(transaction)
+                        "description": description,
+                        "from": from_val,
+                        "to": to_val,
+                    }
+                    transaction_data.append(transaction)
     except FileNotFoundError as e:
         print(f"Excel file {filename} not found: {e}")
     except KeyError as e:

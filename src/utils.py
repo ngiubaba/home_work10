@@ -1,9 +1,11 @@
 import json
 import logging
 import os
+from collections import Counter
 from typing import Any, Union
 
 from src.external_api import convert_rub
+from src.processing import find_by_description
 
 os.makedirs("logs", exist_ok=True)
 log_file = "logs/utils.log"
@@ -18,7 +20,7 @@ logger.setLevel(logging.DEBUG)
 def transaction_dictionary(file_name: str = "operations.json") -> Union[list[dict], dict]:
     logger.info("Начало функции")
     dict_transaction: list[dict[str, Any]] = []
-    file_path = os.path.join("..", "data", file_name)
+    file_path = os.path.join("data", file_name)
     if not os.path.exists(file_path):
         logger.debug("Файл пустой")
         return dict_transaction
@@ -29,25 +31,14 @@ def transaction_dictionary(file_name: str = "operations.json") -> Union[list[dic
             if not content:
                 logger.debug("Файл пустой")
                 return []
-            logger.debug("Перевод в json файл")
+            logger.debug("Перевод из json файла")
             dict_transaction = json.loads(content)
 
-            if type(dict_transaction) is list:
+            if len(dict_transaction) >= 1:
                 logger.info("Функция выполнена")
                 return dict_transaction
             else:
                 return []
-
-
-transaction_data = {
-    "id": 441945886,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {"amount": "10", "currency": {"name": "руб.", "code": "USD"}},
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589",
-}
 
 
 def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
@@ -64,6 +55,14 @@ def get_transaction_amount(transaction_data: dict[str, Any]) -> float:
         return float(result)
 
 
-if __name__ == "__main__":
-    logger.info("Запуск программы")
-    print(get_transaction_amount(transaction_data))
+def counter_category(transactions_data: list, categories: list[str]) -> dict[str, int]:
+    """Функция подсчета операций по категориям"""
+
+    categories_count = Counter()
+
+    for category in categories:
+        transactions = find_by_description(transactions_data, category)
+        for i in range(len(transactions)):
+            categories_count.update([category])
+
+    return dict(categories_count)

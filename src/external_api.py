@@ -14,7 +14,3 @@ def convert_rub(from1: str, amount: float) -> float:
     # print(responce.status_code)
     result = responce.json()["result"]
     return float(result)
-
-
-# if __name__ == "__main__":
-#     print(convert_rub("EUR", "1"))

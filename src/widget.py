@@ -26,19 +26,22 @@ def mask_account_card(card: str) -> str:
             return f"{text}{masks.get_mask_account(number)}"
         else:
             raise InvalidAccountNumberError("Номер счета должен состоять из 20 цифр")
-    elif "visa" in text_lower or "mastercard" in text_lower or "maestro" in text_lower:
+    else:
         if len(number) == 16:
             return f"{text}{masks.get_mask_card_number(number)}"
         else:
             raise InvalidCardNumberError("Номер карты должен содержать 16 цифр")
-    else:
-        raise InvalidNameCard("Не верное наименование карты/счета")
 
 
 def get_date(date: str) -> str:
     """Функция принимающая строку в определенном формате и возвращает дд.мм.гггг"""
     try:
-        date_obj = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
+        if "Z" in date:
+            date = date[:-1]  # Удаляем последний символ
+        if "." in date:
+            date_obj = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f")
+        else:
+            date_obj = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
     except ValueError:
         raise ValueError("Введен не верный формат даты")
     else:
